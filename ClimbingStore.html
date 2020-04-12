@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RockyRoad</title>
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+        <style>
+          /*--Style the html, make it look sexy.*/
+          * {
+            /* reset defaults */
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+          }
+
+          :root{
+            /*selectors will inherit from this pseudo-class*/
+            --blueshade: #6085a0;
+            --layer: rgba(96, 133, 160, 0.6);
+          }
+
+          body {
+            /* set base styles for elements displayed */
+            font-family: 'Baloo Da 2', cursive;
+          }
+
+          #page-container {
+            position: relative;
+            min-height: 100vh;
+          }
+
+          /*-----------------------------------------------------------------------------------------------------------------
+                                                             NAVIGATION
+          -----------------------------------------------------------------------------------------------------------------*/
+
+          #nav-bar {
+            /* navigation menu */
+            /* set menu in the top left corner of the page */
+            width: 100%;
+            background-color: black;
+            text-align: center;
+          }
+
+          #logo-image {
+            /* set size of image */
+            width: 4em;
+            height: auto;
+            padding: 0.5em 0;
+            /* align logo image to logo text vertically */
+            vertical-align: middle;
+            transition: 0.5s ease;
+          }
+
+          #logo-image:hover {
+            transform: scale(1.2);
+          }
+
+          .logo-text {
+            /* align logo text horizontally next to logo image*/
+            color: var(--blueshade);
+            font-family: 'Special Elite', cursive;
+          }
+
+          .logo-text:hover {
+            color: white;
+          }
+
+          #switch-text {
+            /* had to create a div around the logo items so that .short-text and .full-text work */
+            display: inline;
+          }
+
+          .short-text {
+            /* displays RR */
+            display: none;
+          }
+
+          .full-text {
+            /* displays RockyRoad */
+            display: inline-block;
+          }
+
+          #nav-list {
+            /* for mobile have a column as the menu */
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            /* remove bullet points from list */
+            list-style-type: none;
+            font-family: 'Montserrat', sans-serif;
+          }
+
+          nav li {
+            font-size: 1.2em;
+            /* keeps items in list centered */
+            width: 100%;
+            padding: 0.5em 0;
+          }
+
+          nav li a {
+            color: var(--blueshade);
+            text-decoration: none;
+          }
+
+          nav li a:hover {
+            color: white
+          }
+
+          hr {
+            /* set to 75 percent of total screen width */
+            width: 75vw;
+            border: 0.11em solid var(--blueshade);
+            border-radius: 5px;
+            /* keeps hr bars centered */
+            align-self: center;
+          }
+
+          /*-----------------------------------------------------------------------------------------------------------------
+                                                          MAIN CONTENT
+          -----------------------------------------------------------------------------------------------------------------*/
+
+          #introduction{
+            /* make a background layer */
+            background-image: url('https://images.unsplash.com/photo-1573413512122-895bf9cd92d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60');
+            background-size: cover;
+            background-attachment: fixed;
+          }
+
+          .blayer {
+            /* make a transparent front layer */
+            background-color: var(--layer);
+            position: relative;
+            width: 100%;
+          }
+
+          #intro-title {
+            font-family: 'Special Elite', cursive;
+            font-size: 2em;
+            text-align: center;
+            padding: 3.5em 0 4.5em 0;
+          }
+
+          #video-wrapper {
+            display: flex;
+            justify-content: center;
+          }
+
+          #video-wrapper > iframe {
+            max-width: 560px;
+            width: 100%;
+          }
+
+          #video-sub {
+            padding-top: 1em;
+            padding-bottom: 3em;
+            text-align: center;
+            font-size: 1.1em;
+            color: black;
+          }
+
+          #shoe-types {
+            padding: 0.2em 0;
+            background-color: black;
+          }
+
+          h2 {
+            font-family: 'Special Elite', cursive;
+            text-align: center;
+            padding: 2em 0;
+          }
+
+          #shoe-quest {
+            color: var(--blueshade);
+          }
+
+          #shoe-categorization {
+            /* align the container items*/
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          }
+
+          #shoe-categorization div {
+            /* space out the individual shoes */
+            margin-bottom: 2em;
+            margin-right: auto;
+            margin-left: auto;
+            /* set these so text doesn't reach each other */
+            max-width: 20em;
+            padding-right: 1em;
+            padding-left: 1em;
+            color: var(--blueshade);
+          }
+
+          #cat1:hover {
+            /* make the shoe pop out */
+            color: #29e3fd;
+          }
+
+          #cat2:hover {
+            /* make the shoe pop out */
+            color: yellow;
+          }
+
+          #cat3:hover {
+            /* make the shoe pop out */
+            color: orange;
+          }
+
+          #shoe-categorization img:hover {
+            /* make the shoe pop out */
+            transform: scale(1.2);
+          }
+
+          #shoe-categorization h3 {
+            padding-bottom: 0.5em;
+          }
+
+          #product-pricing {
+            background-color: var(--blueshade);
+          }
+
+          #product-pricing h2{
+            color: black;
+          }
+
+          .shoe1 {
+            grid-area: shoe1;
+            width: 100%;
+          }
+
+          .shoe2 {
+            grid-area: shoe2;
+            width: 100%;
+          }
+
+          .shoe3 {
+            grid-area: shoe3;
+            width: 100%;
+          }
+
+          .shoe4 {
+            grid-area: shoe4;
+            width: 100%;
+          }
+
+          .shoe5 {
+            grid-area: shoe5;
+            width: 100%;
+          }
+
+          #product-container {
+            color: var(--blueshade);
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+              "shoe1"
+              "shoe2"
+              "shoe3"
+              "shoe4"
+              "shoe5";
+            /* x & y axis */
+            place-items: center;
+            place-content: center;
+          }
+
+          /*-----------------------------------------------------------------------------------------------------------------
+                                                              FORM
+          -----------------------------------------------------------------------------------------------------------------*/
+
+          #form {
+            background-color: black;
+            color: white;
+            width: 100%;
+            padding-top: 1.5em;
+            padding-bottom: 1.5em;
+            display: flex;
+            /* have items align vertically */
+            flex-direction: column;
+            text-align: center;
+          }
+
+          #email-label {
+            margin-bottom: 1.3em;
+            font-weight: bold;
+            font-size: 1em;
+            text-transform: uppercase;
+          }
+
+          .email-submit {
+            /* horizontal layout for email field and submit button */
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+          }
+
+          #email {
+            width: 40%;
+            height: 3em;
+            margin-right: 0.5em;
+            border-radius: 0.4em;
+            /* create a space between the container and text */
+            padding-left: 1em;
+            /* removes border outline */
+            border: none;
+          }
+
+          #submit-button {
+            color: #edf0f1;
+            font-size: 1.1em;
+            text-decoration: none;
+            padding: 0.56em 1.4em;
+            background-color: rgba(0, 136, 169, 1);
+            border: none;
+            border-radius: 0.4em;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
+          }
+
+          #submit-button:hover {
+            background-color: rgba(0, 136, 169, 0.6);
+          }
+
+          #small-print {
+            color: gray;
+            font-size: 0.8em;
+            margin-top: 0.6em;
+          }
+
+          /*-----------------------------------------------------------------------------------------------------------------
+                                                            FOOTER
+          -----------------------------------------------------------------------------------------------------------------*/
+
+          #exclude-footer-container {
+            padding-bottom: 4em;
+          }
+
+          footer {
+            background-color: black;
+            width: 100%;
+            text-align: center;
+            /* place footer at the bottom of the page */
+            position: absolute;
+            bottom: 0;
+            /* height =  #exclude-footer-container{padding-bottom: 5em;}; must be > 3em or gap shows */
+            height: 4em;
+          }
+
+          footer a {
+            /*footer links*/
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+            color: white;
+            text-decoration: none;
+          }
+
+          footer p {
+            /*footer links*/
+            color: white;
+          }
+
+          /*-----------------------------------------------------------------------------------------------------------------
+                                                         SCREEN RESOLUTIONS
+          -----------------------------------------------------------------------------------------------------------------*/
+
+          @media (max-width: 230px) {
+
+            footer {
+              /*footer links*/
+              font-size: 0.8em;
+              padding-bottom: 70px;
+            }
+          }
+
+          @media (max-width: 414px) {
+
+            .short-text {
+              display: inline-block;
+            }
+
+            .full-text {
+              display: none;
+            }
+          }
+
+          @media (min-width: 800px) {
+            /* Desktop & Tablets */
+
+            #nav-bar {
+              /* navigation menu */
+              /* keep menu in position */
+              position: fixed;
+              /* set menu in the top left corner of the page */
+              top: 0;
+              left: 0;
+              /* keeps elements from going above it */
+              z-index: 500;
+            }
+
+            #logo-image {
+              width: 5em;
+              height: auto;
+            }
+
+            #logo-text {
+              font-size: 2.3em;
+              vertical-align: bottom;
+            }
+
+            #nav-list {
+              /* for mobile have a column as the menu */
+              flex-direction: row;
+              justify-content: center;
+            }
+
+            nav li {
+              /* place list items horizontally*/
+              width: 10%;
+            }
+
+            hr {
+              display: none;
+            }
+
+            #intro-title {
+              /* keep the intro alone */
+              margin-top: 2.38em;
+              font-size: 3em;
+              color: black;
+            }
+
+            #product-container {
+              grid-template-columns: 1fr 1fr 1fr;
+              grid-template-areas:
+                "shoe1 shoe2 shoe3"
+                "shoe1 shoe4 shoe5";
+              place-items: stretch;
+            }
+          }
+
+        </style>
+    </head>
+    <body>
+      <div id="page-container">
+        <div id="exclude-footer-container">
+          <header>
+            <nav id="nav-bar">
+              <!-- logo -->
+              <div id="switch-text">
+                <img id="logo-image" src="http://clipart-library.com/newhp/angry-rock-clipart-by-matiseli-on-deviantart-1997.png" alt="logo">
+                <h1 class="full-text logo-text">RockyRoad</h1>
+                <h1 class="short-text logo-text">RR</h1>
+              </div>
+              <ul id="nav-list">
+                <li><a href="#video-wrapper">Video</a></li>
+                <hr>
+                <li><a href="#shoe-quest">Types</a></li>
+                <hr>
+                <li><a href="#product-container">Products</a></li>
+                <hr>
+                <li><a href="#email">Contact</a></li>
+            </nav>
+          </header>
+          <main id="main-content">
+            <section id="introduction">
+              <div>
+                <h1 id="intro-title" class="blayer">Where rubber meets rock</h1>
+              </div>
+              <div id="video-wrapper" class="blayer">
+                <iframe width="560" height="315"
+                        src="https://www.youtube.com/embed/a5CT8B6eI0A"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                </iframe>
+              </div>
+              <p id="video-sub" class="blayer">As you can see, having the right product for the activity is of utmost importance.</p>
+            </section>
+            <section id="shoe-types">
+              <h2 id="shoe-quest">What type is right for you?</h2>
+              <section id="shoe-categorization">
+                <div id="cat1">
+                  <h3>Neutral Shoes</h3>
+                  <img src="https://www.rei.com/assets/img/banners/2016/0501/shoes/shoe-neutral.png" alt="Neutral climbing shoe">
+                  <p>For all-day comfort on any climb</p>
+                </div>
+                <div id="cat2">
+                  <h3>Moderate Shoes</h3>
+                  <img src="https://www.rei.com/assets/img/banners/2016/0501/shoes/shoe-moderate.png" alt="Moderate climbing shoe">
+                  <p>For performance + comfort on challenging routes</p>
+                </div>
+                <div id="cat3">
+                  <h3>Aggressive Shoes</h3>
+                  <img src="https://www.rei.com/assets/img/banners/2016/0501/shoes/shoe-aggressive.png" alt="Aggressive climbing shoe">
+                  <p>For max power on difficult climbs</p>
+                </div>
+              </section>
+            </section>
+            <section id="product-pricing">
+              <h2>"The best view comes after the hardest climb"</h2>
+              <div id="product-container">
+                <img class="shoe1" href="#" src="https://images.unsplash.com/photo-1578886141033-b9f066572135?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Shoe 1">
+                <img class="shoe2" href="#" src="https://images.unsplash.com/photo-1560412838-f0eaf1d23074?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1055&q=80" alt="Shoe 2">
+                <img class="shoe3" href="#" src="https://images.unsplash.com/photo-1478827227954-745b0daf2534?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="Shoe 3">
+                <img class="shoe4" href="#" src="https://github.com/HazyStreet/product-landing-page/blob/master/Babyface.jpg?raw=true" alt="Shoe 4">
+                <img class="shoe5" href="#" src="https://images.unsplash.com/photo-1570642480413-b3614be1bfc3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="Shoe 5">
+              </div>
+            </section>
+            <form id="form" action="/url-where-you-want-to-submit-form-data">
+              <label id="email-label" for="email">Get exclusive access to new products, deals and surprise treats</label>
+              <div class="email-submit">
+                <input id="email" type="email" name="email" placeholder="Enter your email" required>
+                <button id="submit-button" value="submit" type="submit">Go</button>
+              </div>
+              <p id="small-print">
+                <small>You are signing up to receive product updates and newsletters. By signing up, you are consenting to our privacy policy but you can opt out at any time.</small>
+              </p>
+            </form>
+          </main>
+        </div>
+        <footer>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+          <p>Copyright 2020, RockyRoad</p>
+        </footer>
+      </div>
+    <body>
+<html>
